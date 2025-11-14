@@ -1,6 +1,7 @@
 from django.db.models.aggregates import Sum
 from django.shortcuts import render, get_object_or_404
 
+from .forms import DonationForm
 from .models import Project, Donation
 
 
@@ -15,6 +16,8 @@ def index(request):
 
 def project_page(request, pk):
     project = get_object_or_404(Project, pk=pk)
+    form = DonationForm()
     return render(request, 'project_detail.html', context={
-        'project': project
+        'project': project,
+        'form': form,
     })
