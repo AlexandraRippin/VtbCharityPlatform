@@ -1,5 +1,5 @@
 from django.db.models.aggregates import Sum
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Project, Donation
 
@@ -11,4 +11,10 @@ def index(request):
     return render(request, 'index.html', context={
         'total_amount': total_amount,
         'projects': projects,
+    })
+
+def project_page(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    return render(request, 'project_detail.html', context={
+        'project': project
     })

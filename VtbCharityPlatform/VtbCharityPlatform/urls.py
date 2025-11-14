@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Charity.views import index
+from Charity.views import index, project_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('project/<int:pk>/', project_page ,name='project_detail'),
 ]
