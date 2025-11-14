@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Спасибо за пожертвование</title>
+</head>
+<body>
+    <h1>Спасибо, {{ donation.donor_name|default:"Аноним" }}!</h1>
+    <p>Ваша сумма в размере {{ donation.amount }} рублей успешно передана в проект "{{ project.title }}"</p>
+    <a href="{% url 'index' %}">Вернуться на главную</a>
+</body>
+</html>
