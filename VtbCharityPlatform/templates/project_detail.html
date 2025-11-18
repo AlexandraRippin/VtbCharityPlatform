@@ -1,27 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Проект "{{ project.title }}"</title>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Проект "{{ project.title }}" | Благотворительная платформа ВТБ</title>
+    <link rel="stylesheet" href="{% static 'css/index_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/project_detail_style.css' %}" />
 </head>
 <body>
-    <h1>Проект "{{ project.title }}"</h1>
-    <p>Описание:</p>
-    <div>
-        <p>{{ project.description }}</p>
+    <header class="topbar">
+        <a href="{% url 'index' %}" class="logo"><img src="{% static 'VTB_logo.svg' %}" alt="VTB"></a>
+        <nav class="menu">
+            <a href="#">Проекты</a>
+            <a href="#">Статистика</a>
+            <a href="#">О нас</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </header>
+
+    <div class="project-detail-container">
+        <a href="{% url 'index' %}" class="back-button">Назад к проектам</a>
+
+        <div class="project-detail-card">
+            <div class="project-header">
+                <div class="project-icon-large">❤️</div>
+                <h1 class="project-title-large">{{ project.title }}</h1>
+                <p class="project-description-large">{{ project.description }}</p>
+            </div>
+
+            <div class="project-stats">
+                <div class="stat-item">
+                    <div class="stat-value">{{ project.current_amount }} ₽</div>
+                    <div class="stat-label">Собрано средств</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">{{ project.target_amount }} ₽</div>
+                    <div class="stat-label">Цель сбора</div>
+                </div>
+                <div class="stat-item">
+                    {% widthratio project.current_amount project.target_amount 100 as progress %}
+                    <div class="stat-value">{{ progress }}%</div>
+                    <div class="stat-label">Прогресс</div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-large">
+                    <div class="progress-bar-large" style="width: {{ progress }}%;"></div>
+                </div>
+                <div class="progress-text-large">
+                    Собрано {{ progress }}% от цели
+                </div>
+            </div>
+        </div>
+
+        <div class="donation-form-section">
+            <h2 class="form-title">Сделать пожертвование</h2>
+
+            <form method="post" class="donation-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label class="form-label">Сумма пожертвования (руб)</label>
+                    <div class="amount-options">
+                        <div class="amount-option" data-amount="100">100 ₽</div>
+                        <div class="amount-option" data-amount="500">500 ₽</div>
+                        <div class="amount-option" data-amount="1000">1000 ₽</div>
+                    </div>
+                    {{ form.amount }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_donor_name" class="form-label">Ваше имя (необязательно)</label>
+                    {{ form.donor_name }}
+                </div>
+
+
+                <button type="submit" class="submit-button">Перевести средства</button>
+
+                <p class="form-note">
+                    Все пожертвования защищены и используются строго по назначению
+                </p>
+            </form>
+        </div>
     </div>
-    <div>
-        <p>Цель: {{ project.target_amount }} рублей</p>
-        <p>Собрано: {{ project.current_amount }} рублей</p>
-    </div>
-    <div>
-        <h2>Сделать пожертвование</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Пожертвовать</button>
-        </form>
-    </div>
-    <a href="{% url 'index' %}">На главную страницу</a>
+
+    <script src="{% static 'js/project_detail.js' %}"></script>
 </body>
 </html>

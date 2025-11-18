@@ -1,0 +1,228 @@
+.project-detail-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 25px;
+    color: #0066ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    color: #004ec7;
+}
+
+.back-button::before {
+    content: "←";
+    margin-right: 8px;
+}
+
+.project-detail-card {
+    background: white;
+    border-radius: 16px;
+    padding: 50px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.project-icon-large {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.project-title-large {
+    font-size: 2.4em;
+    color: #003da6;
+    margin-bottom: 20px;
+}
+
+.project-description-large {
+    font-size: 1.2em;
+    line-height: 1.7;
+    color: #4d5c75;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.project-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+    padding: 30px;
+    background: #f7f9fc;
+    border-radius: 12px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #003da6;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: #697a92;
+    font-size: 0.9em;
+}
+
+.progress-section {
+    margin: 40px 0;
+}
+
+.progress-large {
+    background: #e8eef7;
+    border-radius: 12px;
+    height: 16px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-bar-large {
+    height: 100%;
+    background: linear-gradient(90deg, #003da6, #4a8bff);
+    border-radius: 12px;
+    transition: width 1s ease-in-out;
+}
+
+.progress-text-large {
+    text-align: center;
+    font-size: 1.1em;
+    color: #1c2b4a;
+    margin: 15px 0;
+}
+
+.donation-form-section {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.8em;
+    color: #003da6;
+    margin-bottom: 30px;
+}
+
+.donation-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1c2b4a;
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e8eef7;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #0066ff;
+}
+
+.amount-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.amount-option {
+    padding: 12px;
+    text-align: center;
+    background: #f7f9fc;
+    border: 2px solid #e8eef7;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.amount-option:hover {
+    border-color: #0066ff;
+    background: #e8f0ff;
+}
+
+.amount-option.selected {
+    background: #0066ff;
+    color: white;
+    border-color: #0066ff;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 18px;
+    background: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background: #004ec7;
+}
+
+.form-note {
+    text-align: center;
+    margin-top: 20px;
+    color: #697a92;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .project-detail-card {
+        padding: 30px 20px;
+    }
+
+    .project-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .amount-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-title-large {
+        font-size: 2em;
+    }
+
+    .project-description-large {
+        font-size: 1.1em;
+    }
+}
