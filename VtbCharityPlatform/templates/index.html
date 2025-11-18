@@ -1,22 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Втб Благотворительная платформа</title>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Благотворительная платформа ВТБ</title>
+    <link rel="stylesheet" href="{% static 'css/index_style.css' %}" />
 </head>
 <body>
-    <h1>Собрано: {{ total_amount }} рублей</h1>
+    <header class="topbar">
+        <a href="{% url 'index' %}" class="logo"><img src="{% static 'VTB_logo.svg' %}" alt="VTB"></a>
+        <nav class="menu">
+            <a href="#">Проекты</a>
+            <a href="{% url 'index' %}">Статистика</a>
+            <a href="#">О нас</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </header>
 
-    <h2>Проекты:</h2>
-    <div>
-        {% for project in projects%}
-        <div>
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.description }}</p>
-            <p>Собрано {{ project.current_amount }} из {{ project.target_amount }} руб.</p>
-            <a href="{% url 'project_detail' project.id %}">О проекте</a>
+    <section class="hero">
+        <h1>Благотворительная платформа</h1>
+        <p class="hero-sub">Помогайте тем, кто в этом нуждается</p>
+        <p class="hero-collected-label">Собрано</p>
+        <div class="hero-total">{{ total_amount }} ₽</div>
+        <div class="hero-btn" onclick="heroClick()">Пожертвовать</div>
+    </section>
+
+    <section class="projects-section" id="projects-grid">
+        <h2 class="section-title">Выберите проект</h2>
+
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <div class="project-icon">❤️</div>
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-description">{{ project.description }}</p>
+
+                <div class="progress-container">
+                    {% widthratio project.current_amount project.target_amount 100 as progress %}
+                    <div class="progress-bar" style="width: {{ progress }}%;"></div>
+                </div>
+                <p class="progress-text">{{ progress }}% собрано</p>
+
+                <div class="amount-info">
+                    <span class="current-amount">{{ project.current_amount }} ₽</span>
+                    <span class="target-amount">Цель: {{ project.target_amount }} ₽</span>
+                </div>
+
+                <a href="{% url 'project_detail' project.id %}" class="donate-button">Поддержать проект</a>
+            </div>
+            {% empty %}
+            <div class="empty-state">
+                <h3>Пока нет активных проектов</h3>
+                <p>Скоро здесь появятся новые инициативы</p>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
+    </section>
+    <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>
