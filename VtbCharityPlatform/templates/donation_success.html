@@ -1,12 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Спасибо за пожертвование</title>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пожертвование успешно | Благотворительная платформа ВТБ</title>
+    <link rel="stylesheet" href="{% static 'css/index_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/donation_success_style.css' %}" />
 </head>
 <body>
-    <h1>Спасибо, {{ donation.donor_name|default:"Аноним" }}!</h1>
-    <p>Ваша сумма в размере {{ donation.amount }} рублей успешно передана в проект "{{ project.title }}"</p>
-    <a href="{% url 'index' %}">Вернуться на главную</a>
+    <header class="topbar">
+        <a href="{% url 'index' %}" class="logo"><img src="{% static 'VTB_logo.svg' %}" alt="VTB"></a>
+        <nav class="menu">
+            <a href="#">Проекты</a>
+            <a href="#">Статистика</a>
+            <a href="#">О нас</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </header>
+
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">🎉</div>
+            <h1 class="success-title">Спасибо за ваше пожертвование!</h1>
+
+            <p class="success-message">
+                Ваша поддержка помогает менять жизни к лучшему.
+                Благодаря вам проект <strong>"{{ project.title }}"</strong> стал на шаг ближе к своей цели.
+            </p>
+
+            <div class="donation-details">
+                <div class="detail-row">
+                    <span class="detail-label">Жертвователь:</span>
+                    <span class="detail-value">{{ donation.donor_name|default:"Аноним" }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Сумма:</span>
+                    <span class="detail-value donation-amount">{{ donation.amount }} ₽</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Проект:</span>
+                    <span class="detail-value project-name">{{ project.title }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Дата:</span>
+                    <span class="detail-value">{{ donation.date|date:"d.m.Y" }}</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="{% url 'index' %}" class="btn-primary">Вернуться к проектам</a>
+                <a href="{% url 'index' %}" class="btn-secondary">Посмотреть статистику</a>
+            </div>
+
+            <div class="thank-you-note">
+                "Благотворительность - не просто помощь, это инвестиция в лучшее будущее для всех нас."
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/donation_success.js' %}"></script>
 </body>
 </html>
