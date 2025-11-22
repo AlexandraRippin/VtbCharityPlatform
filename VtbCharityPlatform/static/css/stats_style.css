@@ -1,0 +1,146 @@
+.stats-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.stats-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.stats-title {
+    font-size: 2.8em;
+    color: #003da6;
+    margin-bottom: 15px;
+}
+
+.stats-subtitle {
+    font-size: 1.2em;
+    color: #697a92;
+}
+
+.stats-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.stat-icon {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.stat-number {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #003da6;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #697a92;
+    font-size: 0.95em;
+}
+
+.charts-section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 2em;
+    color: #1c2b4a;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.chart-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    transition: 0.3s;
+}
+
+.chart-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.chart-header {
+    margin-bottom: 20px;
+}
+
+.chart-title {
+    font-size: 1.3em;
+    color: #1c2b4a;
+    font-weight: 600;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.action-buttons {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 14px 34px;
+    background: #0066ff;
+    color: white;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #004ec7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-overview {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .stats-title {
+        font-size: 2.2em;
+    }
+    
+    .chart-wrapper {
+        height: 300px;
+    }
+}
+

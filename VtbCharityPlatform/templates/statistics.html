@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Статистика | Благотворительная платформа ВТБ</title>
+    <link rel="stylesheet" href="{% static 'css/index_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/stats_style.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="topbar">
+        <a href="{% url 'index' %}" class="logo"><img src="{% static 'VTB_logo.svg' %}" alt="VTB"></a>
+        <nav class="menu">
+            <a href="{% url 'index' %}">Проекты</a>
+            <a href="{% url 'stats' %}" style="color: #0066ff;">Статистика</a>
+            <a href="https://www.vtb.ru" target="_blank">О банке</a>
+        </nav>
+    </header>
+
+    <div class="stats-container">
+        <div class="stats-header">
+            <h1 class="stats-title">Статистика пожертвований</h1>
+            <p class="stats-subtitle">Аналитика и визуализация сборов по проектам за разные периоды времени</p>
+        </div>
+
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-number">{{ total_donations }} ₽</div>
+                <div class="stat-label">Общая сумма пожертвований</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-number">{{ projects_count }}</div>
+                <div class="stat-label">Активных проектов</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number">{{ total_donors }}</div>
+                <div class="stat-label">Всего жертвователей</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-number">{{ avg_donation }} ₽</div>
+                <div class="stat-label">Среднее пожертвование</div>
+            </div>
+        </div>
+
+        <div class="charts-section">
+            <h2 class="section-title">Динамика пожертвований</h2>
+
+            <div class="charts-container">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Общие пожертвования по дням</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="dailyChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">По проектам</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="projectsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Пожертвования в проекты по дням</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="projectsDailyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="{% url 'index' %}" class="btn-primary">Вернуться к проектам</a>
+        </div>
+    </div>
+
+    <script>
+    const chartData = {
+        daily: {
+            labels: {{ daily_labels|safe }},
+            data: {{ daily_data|safe }}
+        },
+        projects: {
+            labels: {{ projects_labels|safe }},
+            data: {{ projects_data|safe }}
+        },
+        projectsDaily: {{ projects_daily_data|safe }}
+    };
+    </script>
+    <script src="{% static 'js/stats.js' %}"></script>
+</body>
+</html>
