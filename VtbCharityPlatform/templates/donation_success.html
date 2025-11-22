@@ -13,9 +13,8 @@
         <a href="{% url 'index' %}" class="logo"><img src="{% static 'VTB_logo.svg' %}" alt="VTB"></a>
         <nav class="menu">
             <a href="#">Проекты</a>
-            <a href="#">Статистика</a>
-            <a href="#">О нас</a>
-            <a href="#">Контакты</a>
+            <a href="{% url 'stats' %}">Статистика</a>
+            <a href="https://www.vtb.ru" target="_blank">О банке</a>
         </nav>
     </header>
 
@@ -50,7 +49,7 @@
 
             <div class="action-buttons">
                 <a href="{% url 'index' %}" class="btn-primary">Вернуться к проектам</a>
-                <a href="{% url 'index' %}" class="btn-secondary">Посмотреть статистику</a>
+                <a href="{% url 'stats' %}" class="btn-secondary">Посмотреть статистику</a>
             </div>
 
             <div class="thank-you-note">
