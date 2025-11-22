@@ -65,6 +65,7 @@ python manage.py runserver
 Переменные окружения не используются. Все настройки в файле `VtbCharityPlatform/VtbCharityPlatform/settings.py`.
 
 Используется SQLite база данных (`db.sqlite3`).
+База данных с заполненными данными лежит в `testData\db.sqlite3`. Для использования перенесите её в папку проекта рядом с файлом `manage.py`
 
 ## Учётные данные для входа
 
@@ -75,7 +76,7 @@ python manage.py runserver
 ## Структура проекта
 
 ```
-VtbCharityPlatform/
+VtbCharityPlatform/informatika44@yandex.ru
 ├── VtbCharityPlatform/
 │   ├── Charity/              # Приложение
 │   │   ├── models.py        # Модели Project, Donation
