@@ -76,7 +76,6 @@ python manage.py runserver
 ## Структура проекта
 
 ```
-VtbCharityPlatform/informatika44@yandex.ru
 ├── VtbCharityPlatform/
 │   ├── Charity/              # Приложение
 │   │   ├── models.py        # Модели Project, Donation
@@ -87,6 +86,7 @@ VtbCharityPlatform/informatika44@yandex.ru
 │   │   ├── settings.py
 │   │   └── urls.py
 │   ├── templates/           # HTML шаблоны
+│   ├── testData/            # Тестовая база данных
 │   ├── static/              # CSS, JS, изображения
 │   ├── db.sqlite3           # База данных
 │   └── manage.py
