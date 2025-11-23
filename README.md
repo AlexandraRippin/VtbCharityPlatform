@@ -77,7 +77,7 @@ python manage.py runserver
 
 ```
 ├── VtbCharityPlatform/
-│   ├── Charity/              # Приложение
+│   ├── Charity/             # Приложение
 │   │   ├── models.py        # Модели Project, Donation
 │   │   ├── views.py         # Представления
 │   │   ├── forms.py         # Формы
@@ -89,6 +89,8 @@ python manage.py runserver
 │   ├── testData/            # Тестовая база данных
 │   ├── static/              # CSS, JS, изображения
 │   ├── db.sqlite3           # База данных
-│   └── manage.py
-└── requirements.txt
+│   └── manage.py            # Управляющий файл Django
+├── .gitignore
+├── README.md
+└── requirements.txt         # Список зависимостей (библиотек) для python
 ```
