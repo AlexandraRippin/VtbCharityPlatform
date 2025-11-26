@@ -40,20 +40,12 @@ function initializeAmountSelection() {
 
 function initializeFormStyling() {
     const donorNameInput = document.querySelector('#id_donor_name');
-    const emailInput = document.querySelector('#id_email');
     const amountInput = document.querySelector('#id_amount');
 
     if (donorNameInput) {
         donorNameInput.className = 'form-input';
         if (!donorNameInput.placeholder) {
             donorNameInput.placeholder = 'Как к вам обращаться?';
-        }
-    }
-
-    if (emailInput) {
-        emailInput.className = 'form-input';
-        if (!emailInput.placeholder) {
-            emailInput.placeholder = 'example@email.com';
         }
     }
 
